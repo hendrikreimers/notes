@@ -1,0 +1,59 @@
+{
+  "name": "notes",
+  "version": "0.1.0",
+  "description": "Native Shadow Dom TypeScript Notes learning project",
+  "main": "index.js",
+  "scripts": {
+    "winDevServer": "powershell.exe -Command bash ./scripts/copyFiles.sh develop; cd build; npx http-server",
+    "startCompiler": "powershell.exe -Command npx tsc --build tsconfig.json -w",
+    "watchCompiledScripts": "powershell.exe -Command bash -c 'while sleep 3; do bash ./scripts/correctImports.sh; done'",
+    "build": "tsc",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hendrikreimers/notes.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hendrikreimers/notes/issues"
+  },
+  "homepage": "https://github.com/hendrikreimers/notes#readme",
+  "devDependencies": {
+    "@testing-library/dom": "^8.11.3",
+    "@testing-library/jest-dom": "^5.16.2",
+    "@types/jest": "^27.4.0",
+    "jest": "^27.5.1",
+    "ts-jest": "^27.1.3",
+    "typescript": "^4.5.5"
+  },
+  "jest": {
+    "roots": [
+      "<rootDir>/src"
+    ],
+    "preset": "ts-jest",
+    "verbose": true,
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}",
+      "!src/index.{ts,tsx}"
+    ],
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-dom/extend-expect"
+    ],
+    "testRegex": "(/__tests__/.*|(\\.|/)test)\\.tsx?$",
+    "testEnvironment": "jest-environment-jsdom",
+    "testURL": "http://localhost",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 70
+      }
+    }
+  }
+}
